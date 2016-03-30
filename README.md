@@ -15,3 +15,4 @@ This is a basic JavaScript front-end boilerplate so I don't have to spend so muc
 - unit tests
 - functional tests
 - node dev server proxy
+- dead code elimination
