@@ -13,6 +13,9 @@ module.exports = {
     filename: "bundle.js",
   },
   module: {
+    preLoaders: [
+      { test: /\.js$/, loader: "eslint", exclude: /node_modules/ },
+    ],
     loaders: [
       { test: /\.js$/, loader: "babel", exclude: /node_modules/, query: { presets: ['es2015', 'react', 'stage-0'] } },
       { test: /\.scss/, loader: "style!css!sass" },

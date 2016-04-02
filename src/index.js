@@ -7,9 +7,9 @@ const start = (Component) =>
 
 start(App)
 
-if(module.hot) {
-    // accept update of dependency
-    module.hot.accept("app", function() {
-      start(require('./app')['default'])
-    });
+if (module.hot) {
+  // accept update of dependency
+  module.hot.accept('app', function() {
+    start(require('./app').default)
+  })
 }

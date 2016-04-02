@@ -1,5 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import config from 'config'
+
+require('main.scss')
 
 export default (props) => <div>{config.message}</div>
