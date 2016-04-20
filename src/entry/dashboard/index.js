@@ -29,4 +29,9 @@ const render = () =>
     </div>
   )
 
+// this will get ripped out by the uglify plugin when building for production
+if (DEV) {
+  console.log('Welcome to the development dashboard')
+}
+
 render()

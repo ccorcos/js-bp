@@ -16,5 +16,7 @@
     "indent": 0,
     "no-new-func": 0,
     "react/jsx-space-before-closing": 0,
+    "no-undef": 0,
+    "no-console": 0
   }
 }

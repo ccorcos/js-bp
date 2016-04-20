@@ -12,7 +12,6 @@ This is a basic JavaScript front-end boilerplate so I don't have to spend so muc
 
 # TODO
 
-- feature flags (formatted logs?)
 - css extract text
 
 - react storybook
