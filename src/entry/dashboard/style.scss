@@ -1,0 +1,16 @@
+@import
+"scope";
+
+.background-image {
+  background-image: url("~images/fine.png");
+  height: 100px;
+  width: 210px;
+  background-size: cover;
+}
+
+.inline-background-image {
+  background-image: url("~images/check.png");
+  height: 20px;
+  width: 20px;
+  background-size: cover;
+}

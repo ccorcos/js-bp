@@ -1,0 +1,149 @@
+// Imports
+
+@font-face {
+  font-family: "adventure";
+  src: url("~fonts/adventure/Adventure.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "adventure-hollow";
+  src: url("~fonts/adventure/Adventure Hollow.otf") format("opentype");
+}
+
+
+// Font sizes
+
+$regular-font-size: (
+  null: 15px,
+  $medium: 16px
+);
+
+$small-font-size: (
+  null: 14px,
+  $medium: 15px
+);
+
+$x-small-font-size: (
+  null: 12px,
+  $medium: 13px
+);
+
+$h1-font-size: (
+  null: 28px,
+  $medium: 30px,
+  $large: 32px
+);
+
+$h2-font-size: (
+  null: 24px,
+  $medium: 26px,
+  $large: 28px
+);
+
+$h3-font-size: (
+  null: 20px,
+  $medium: 22px,
+  $large: 24px
+);
+
+$h4-font-size: (
+  null: 16px,
+  $medium: 18px,
+  $large: 20px
+);
+
+$h5-font-size: (
+  null: 16px
+  // $medium: 16px
+);
+
+
+// General typography
+
+body {
+  @include font-regular;
+  @include font-size($regular-font-size);
+  color: get-color($black, 80);
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+
+// Headlines
+
+h1, h2, h3, h4, h5, h6 {
+  color: get-color($black, 90);
+  line-height: 1.25;
+  @include font-hollow;
+}
+
+h1,
+.h1 {
+  margin: 0 0 0.3em 0;
+  @include font-size($h1-font-size);
+}
+
+
+h2,
+.h2 {
+  margin: 0 0 0.5em 0;
+  @include font-size($h2-font-size);
+}
+
+h3,
+.h3 {
+  margin: 0 0 0.75em 0;
+  @include font-size($h3-font-size);
+}
+
+h4,
+.h4 {
+  margin: 0 0 1em 0;
+  @include font-size($h4-font-size);
+}
+
+h5,
+.h5 {
+  margin: 0 0 1em 0;
+  @include font-size($h5-font-size);
+}
+
+h6,
+.h6 {
+  margin: 0 0 1em 0;
+  @include caps;
+}
+
+
+// Paragraphs and lists
+
+p,
+ul,
+ol {
+  line-height: 1.5;
+  margin: 0 0 1.5em 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+ul,
+ol {
+  padding-left: 1.25em;
+}
+
+
+// Misc
+
+strong {
+  @include font-hollow;
+}
+
+small {
+  display: inline-block;
+  @include font-size($small-font-size);
+}
+
+pre {
+  @include font-size($regular-font-size);
+}

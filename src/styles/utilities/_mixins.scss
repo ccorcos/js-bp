@@ -1,0 +1,91 @@
+// Media queries
+
+@mixin mq($breakpoint) {
+  @if $breakpoint == x-large {
+    @media (min-width: $x-large) { @content; }
+  }
+  @else if $breakpoint == large-only {
+    @media (min-width: $large) and (max-width: $x-large - 1) { @content; }
+  }
+  @else if $breakpoint == large {
+    @media (min-width: $large) { @content; }
+  }
+  @else if $breakpoint == medium-only {
+    @media (min-width: $medium) and (max-width: $large - 1) { @content; }
+  }
+  @else if $breakpoint == medium {
+    @media (min-width: $medium) { @content; }
+  }
+  @else if $breakpoint == small-only {
+    @media (min-width: $small) and (max-width: $medium - 1) { @content; }
+  }
+  @else if $breakpoint == small {
+    @media (min-width: $small) { @content; }
+  }
+  @else if $breakpoint == x-small-only {
+    @media (min-width: $x-small) and (max-width: $small - 1) { @content; }
+  }
+  @else if $breakpoint == x-small {
+    @media (min-width: $x-small) { @content; }
+  }
+}
+
+
+// Drop shadow
+
+@mixin drop-shadow($darkness: 0.1) {
+  box-shadow: 0px 2px 4px 0px rgba(get-color($black, 100), $darkness);
+}
+
+@mixin drop-shadow-dark {
+  box-shadow: 0px 3px 6px 0px rgba(get-color($black, 100), 0.2);
+}
+
+
+// Filled button
+
+@mixin filled-button($color) {
+  background-color: $color;
+
+  &:hover {
+    background-color: mix($color, #000, 95%);
+  }
+
+  &:active,
+  &:focus {
+    background-color: mix($color, #000, 90%);
+  }
+}
+
+
+// Font Sizes
+
+@mixin font-size($fs-map) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      font-size: $fs-font-size;
+    }
+    @else {
+      @media screen and (min-width: $fs-breakpoint) {
+        font-size: $fs-font-size;
+      }
+    }
+  }
+}
+
+
+// Fonts
+
+@mixin font-regular {
+  font-family: 'adventure', sans-serif;
+}
+
+@mixin font-hollow {
+  font-family: 'adventure-hollow', sans-serif;
+}
+
+@mixin caps {
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}

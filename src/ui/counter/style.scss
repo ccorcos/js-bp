@@ -1,0 +1,17 @@
+@import
+"scope";
+
+$counter-size: 30px;
+
+.counter {
+  text-align: center;
+  button {
+    @include filled-button($mint);
+    border-radius: $counter-size / 2;
+    height: $counter-size;
+    width: $counter-size;
+  }
+  span {
+    padding: 0 $counter-size / 3;
+  }
+}

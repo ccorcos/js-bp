@@ -1,0 +1,27 @@
+// Paths
+
+$assets-path: "../assets/";
+
+
+// Animations
+
+$time: 0.2s;
+$time-longer: 0.4s;
+$time-faster: 0.1s;
+
+$curve: ease-in-out;
+$curve-bounce: cubic-bezier(0.155, 0.960, 0.560, 1.315);
+
+
+// Media queries
+
+$x-small: 416px;
+$small: 580px;
+$medium: 864px;
+$large: 1096px;
+$x-large: 1320px;
+
+
+// Measurements
+
+$spacing: 8px;

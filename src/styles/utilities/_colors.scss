@@ -1,0 +1,8 @@
+// Primary colors
+
+$mint: #78eeb2;
+$black: (10: #F2F4F5, 20: #D5D9DE, 30: #ABB4BE, 40: #9DA6B0, 60: #858E99, 70: #6F7A87, 80: #495662, 90: #373E47, 100: #23292F);
+
+@function get-color($color, $key) {
+  @return map-get($color, $key);
+}

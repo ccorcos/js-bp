@@ -1,0 +1,25 @@
+@import
+"scope";
+
+header {
+  width: 100%;
+  padding: 0 $spacing * 3;
+  background-color: $mint;
+  @include drop-shadow;
+
+  @include mq(small) {
+    padding: 0 $spacing * 5;
+  }
+
+  @include mq(medium) {
+    padding: 0 $spacing * 7;
+  }
+
+  @include mq(large) {
+    padding: 0 $spacing * 9;
+  }
+
+  @include mq(x-large) {
+    padding: 0 $spacing * 11;
+  }
+}
