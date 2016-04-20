@@ -12,6 +12,7 @@ This file supports the following loaders:
 */
 
 const R = require('ramda')
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 const eslint = config => {
   config.module.preLoaders.push({
@@ -39,10 +40,6 @@ const babel = config => {
 }
 
 const scss = config => {
-  config.module.loaders.push({
-    test: /\.scss/,
-    loader: "style!css!resolve-url!sass?sourceMap",
-  })
   config.sassLoader = {
     includePaths: config.resolve.root
   }
@@ -50,15 +47,31 @@ const scss = config => {
     config.resolveUrlLoader = {
       sourceMap: true,
     }
+    config.module.loaders.push({
+      test: /\.scss/,
+      loader: ExtractTextPlugin.extract("css!resolve-url!sass?sourceMap"),
+    })
+  } else {
+    config.module.loaders.push({
+      test: /\.scss/,
+      loader: "style!css!resolve-url!sass?sourceMap",
+    })
   }
   return config
 }
 
 const assets = config => {
-  config.module.loaders.push({
-    test: /\.(svg|png|jpe?g|gif|ttf|woff2?|eot|otf)$/,
-    loader: 'url?limit=8182',
-  })
+  if (process.env.NODE_ENV === 'production') {
+    config.module.loaders.push({
+      test: /\.(svg|png|jpe?g|gif|ttf|woff2?|eot|otf)$/,
+      loader: 'url?limit=8182&name=/assets/[hash].[ext]',
+    })
+  } else {
+    config.module.loaders.push({
+      test: /\.(svg|png|jpe?g|gif|ttf|woff2?|eot|otf)$/,
+      loader: 'url?limit=8182',
+    })
+  }
   return config
 }
 

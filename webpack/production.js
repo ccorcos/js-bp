@@ -26,13 +26,14 @@ TODO:
 const path = require('path')
 const webpack = require('webpack')
 const WebpackShellPlugin = require('webpack-shell-plugin')
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = config => {
   if (process.env.NODE_ENV === "production") {
     const distPath = path.resolve(`${__dirname}/../dist/${config.VERSION}/`)
     config.output = {
       path: distPath,
-      filename: "[name]/index-[hash].js",
+      filename: "[name]/index-[chunkhash].js",
       // publicPath: 'http://mycdn.com/my-bucket/',
       publicPath: distPath + '/',
     }
@@ -45,8 +46,13 @@ module.exports = config => {
       // keep entry chunks small
       new webpack.optimize.OccurrenceOrderPlugin(true),
       // rip out common code into one file
-      new webpack.optimize.CommonsChunkPlugin('common-[hash].js'),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'common',
+        filename: 'common/index-[chunkhash].js',
+        chunks: Object.keys(config.entry)
+      }),
       // minify js and all loaders
+      new ExtractTextPlugin("[name]/style-[chunkhash].css"),
       new webpack.optimize.UglifyJsPlugin({
         mangle: {except: []},
         output: {comments: false},

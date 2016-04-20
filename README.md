@@ -12,10 +12,8 @@ This is a basic JavaScript front-end boilerplate so I don't have to spend so muc
 
 # TODO
 
-- css extract text
-
-- react storybook
 - postcss? css modules? inline css?
+- react storybook
 - routing, state, HMR
 
 - babel/react optimizations
@@ -26,7 +24,6 @@ This is a basic JavaScript front-end boilerplate so I don't have to spend so muc
 - inline svg
 
 - deploy github static site
-- multiple entry points
 - unit tests
 - functional tests
 - node dev server proxy

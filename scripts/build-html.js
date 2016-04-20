@@ -7,7 +7,6 @@ this will copy the entry index.html files and move them to the distribution
 folder with the proper links to to common js chunks and index.js files.
 */
 
-
 const version = process.argv[2]
 let publicPath = process.argv[3]
 
@@ -37,28 +36,52 @@ entries.forEach(entry => {
   let html = fs.readFileSync(`${entryDir}/${entry}/index.html`, 'utf8')
 
   // find the index file and replace the name
-  const indexFile = fs.readdirSync(`${distDir}/${version}/${entry}`)
-    .filter(str => str.startsWith('index'))[0]
+  const jsFile = fs.readdirSync(`${distDir}/${version}/${entry}`)
+    .filter(str => str.endsWith('.js'))[0]
 
-  console.log(`- found index.js: ${indexFile}`)
+  console.log(`- found index.js: ${jsFile}`)
 
-  const indexPath = `${publicPath}/${entry}/${indexFile}`
+  const jsPath = `${publicPath}/${entry}/${jsFile}`
   html = html.replace(
     `<script src="${entry}/index.js"></script>`,
-    `<script src="${indexPath}"></script>`
+    `<script src="${jsPath}"></script>`
+  )
+
+  const cssFile = fs.readdirSync(`${distDir}/${version}/${entry}`)
+    .filter(str => str.endsWith('.css'))[0]
+
+  console.log(`- found style.css: ${cssFile}`)
+
+  const cssPath = `${publicPath}/${entry}/${cssFile}`
+  html = insert(
+    "</head>",
+    `<link rel="stylesheet" type="text/css" href="${cssPath}">`,
+    html
   )
 
   // put the common js file before the index file
-  const commonFiles = fs.readdirSync(`${distDir}/${version}`)
-    .filter(str => str.startsWith('common'))
+  const commonJsFiles = fs.readdirSync(`${distDir}/${version}/common/`)
+    .filter(str => str.endsWith('.js'))
 
-  commonFiles.forEach(commonFile => {
+  commonJsFiles.forEach(commonFile => {
     console.log(`- found common chunk: ${commonFile}`)
-    const commonPath = `${publicPath}/${commonFile}`
-
+    const commonPath = `${publicPath}/common/${commonFile}`
     html = insert(
-      html.indexOf(`<script src="${indexPath}"></script>`),
+      html.indexOf(`<script src="${jsPath}"></script>`),
       `<script src="${commonPath}"></script>`,
+      html
+    )
+  })
+
+  const commonCssFiles = fs.readdirSync(`${distDir}/${version}/common/`)
+    .filter(str => str.endsWith('.css'))
+
+  commonCssFiles.forEach(commonFile => {
+    console.log(`- found common chunk: ${commonFile}`)
+    const commonPath = `${publicPath}/common/${commonFile}`
+    html = insert(
+      html.indexOf(`<link rel="stylesheet" type="text/css" href="${cssPath}">`),
+      `<link rel="stylesheet" type="text/css" href="${commonPath}">`,
       html
     )
   })
