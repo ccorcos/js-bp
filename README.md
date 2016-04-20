@@ -12,27 +12,23 @@ This is a basic JavaScript front-end boilerplate so I don't have to spend so muc
 
 # TODO
 
-- postcss? css modules? inline css?
-- react storybook
-- routing, state, HMR
-
-- babel/react optimizations
-  - https://github.com/thejameskyle/babel-react-optimize
-- image optimizations
-  - https://github.com/tcoopman/image-webpack-loader
-  - https://github.com/Levelmoney/resize-image-loader
-- inline svg
-
-- deploy github static site
 - unit tests
 - functional tests
-- node dev server proxy
-- dead code elimination
-- postcss
-- css modules
+
+- routing, state, HMR
+- postcss? css modules? inline css?
+
+- optimizations
+  - babel/react optimizations
+    - https://github.com/thejameskyle/babel-react-optimize
+  - image optimizations
+    - https://github.com/tcoopman/image-webpack-loader
+    - https://github.com/Levelmoney/resize-image-loader
+
+- react storybook
+- inline svg with css styles
+- deploy github static site
 
 # Features
 
-- webpack
-- hot module replacement
-- babel
+- coming soon
