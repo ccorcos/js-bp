@@ -10,17 +10,15 @@ This is a basic JavaScript front-end boilerplate so I don't have to spend so muc
 
 # TODO
 
-- css
-  - extract text?
-  - commons chunking?
+- build dist files
+- feature flags
+- css extract text
+- commons chunking
 
-- build dist
 
 - react storybook
 - postcss? css modules? inline css?
-- extract css options
 - routing, state, HMR
-- compile define plugins
 
 - babel/react optimizations
   - https://github.com/thejameskyle/babel-react-optimize
