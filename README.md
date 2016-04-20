@@ -7,11 +7,11 @@ This is a basic JavaScript front-end boilerplate so I don't have to spend so muc
 - `src/entry/[name]/index.{js,html}` define the entry points
 - `src/ui/[name]/{index.js,style.scss}` define a component
 - `url("~path/inside/assets")` for assets inside SCSS
-- `NODE_ENV=production webpack -p --progress` to build dist files
+- `npm run build` to build dist files
+- `npm start` to start developing
 
 # TODO
 
-- build dist files -- link html
 - feature flags (formatted logs?)
 - css extract text
 

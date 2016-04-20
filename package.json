@@ -4,6 +4,11 @@
   "author": "Chet Corcos <ccorcos@gmail.com> (http://www.chetcorcos.com/)",
   "description": "JavaScript boilerplate for fun and profit",
   "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack -p --progress",
+    "test": ""
+  },
   "dependencies": {
     "is-js": "^0.1.1",
     "ramda": "^0.20.0",
@@ -32,6 +37,7 @@
     "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-dev-server": "^1.14.0",
-    "webpack-hot-middleware": "^2.6.0"
+    "webpack-hot-middleware": "^2.6.0",
+    "webpack-shell-plugin": "^0.4.2"
   }
 }
