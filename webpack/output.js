@@ -10,17 +10,19 @@ In production, the output hashes your files and adds a public path
 assets and css files will all end up hashed in this same place.
 */
 
+const path = require('path')
+
 module.exports = config => {
   if (process.env.NODE_ENV === "production") {
     config.output = {
-      path: __dirname + '/dist',
+      path: path.resolve(__dirname + '/../dist'),
       filename: "[name]/index-[hash].js",
       publicPath: 'http://mycdn.com/my-bucket/',
     }
   } else {
     config.devtool = 'source-map'
     config.output = {
-      path: __dirname + '/dist',
+      path: path.resolve(__dirname + '/../dist'),
       filename: "[name]/index.js",
       publicPath: '/',
     }

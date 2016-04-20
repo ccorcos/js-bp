@@ -5,10 +5,12 @@ const path = require('path')
 const R = require('ramda')
 
 let empty = {
+  target: 'web',
   module:{
     loaders:[],
     preLoaders:[],
   },
+  plugins: [],
   resolve: {
     root: [
       path.resolve(__dirname),
@@ -17,14 +19,11 @@ let empty = {
       path.resolve(__dirname + '/src/assets'),
     ]
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-  ],
 }
 
 module.exports = R.pipe(
   require('./webpack/entry'),
   require('./webpack/output'),
-  require('./webpack/loaders')
+  require('./webpack/loaders'),
+  require('./webpack/plugins')
 )(empty)
