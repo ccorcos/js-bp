@@ -12,6 +12,10 @@ This is a basic JavaScript front-end boilerplate so I don't have to spend so muc
 
 # TODO
 
+- more modular webpack config
+- js only distributable files shouldnt get hashed
+- configurable chunking
+
 - unit tests
 - functional tests
 
