@@ -54,7 +54,7 @@ entries.forEach(entry => {
 
   const cssPath = `${publicPath}/${entry}/${cssFile}`
   html = insert(
-    "</head>",
+    html.indexOf("</head>"),
     `<link rel="stylesheet" type="text/css" href="${cssPath}">`,
     html
   )

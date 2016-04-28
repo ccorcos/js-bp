@@ -8,24 +8,27 @@ your `entry/[name]/index.html`, you should can add the script tag:
 
 const path = require('path')
 const webpack = require('webpack')
+const utils = require('./utils')
 
 module.exports = config => {
-  if (process.env.NODE_ENV !== "production") {
-    config.devtool = 'source-map'
-    config.output = {
-      path: path.resolve(__dirname + '/../dist'),
-      filename: "[name]/index.js",
-      publicPath: '/',
-    }
+  config.devtool = 'source-map'
 
-    const plugins = list => list.forEach(item => config.plugins.push(item))
-
-    plugins([
-      // dont exit on error
-      new webpack.NoErrorsPlugin(),
-      // hot module replacement for fast development
-      new webpack.HotModuleReplacementPlugin(),
-    ])
+  config.output = {
+    path: path.resolve(__dirname + '/../dist'),
+    filename: "[name]/index.js",
+    publicPath: '/',
   }
+
+  utils.setEntry(config, name => [
+    'webpack-hot-middleware/client',
+    `./src/entry/${name}/index.js`,
+  ])
+
+  utils.addPlugins(config, [
+    // dont exit on error
+    new webpack.NoErrorsPlugin(),
+    // hot module replacement for fast development
+    new webpack.HotModuleReplacementPlugin(),
+  ])
   return config
 }

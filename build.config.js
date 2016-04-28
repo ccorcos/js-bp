@@ -15,4 +15,7 @@ module.exports {
   chunks: {
     common: ['home', 'dashboard'],
   },
+  output: {
+    publicPath: 'mydomain.com/assets/',
+  },
 }

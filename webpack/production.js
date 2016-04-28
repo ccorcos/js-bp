@@ -25,50 +25,51 @@ TODO:
 
 const path = require('path')
 const webpack = require('webpack')
+const utils = require('./utils')
 const WebpackShellPlugin = require('webpack-shell-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = config => {
-  if (process.env.NODE_ENV === "production") {
-    const distPath = path.resolve(`${__dirname}/../dist/${config.VERSION}/`)
-    config.output = {
-      path: distPath,
-      filename: "[name]/index-[chunkhash].js",
-      // publicPath: 'http://mycdn.com/my-bucket/',
-      publicPath: distPath + '/',
-    }
+  const distPath = path.resolve(`${__dirname}/../dist/${config.VERSION}/`)
+  const buildScript = path.resolve(`${__dirname}/../scripts/build-html.js`)
 
-    const plugins = list => list.forEach(item => config.plugins.push(item))
-    const buildScript = path.resolve(`${__dirname}/../scripts/build-html.js`)
-    plugins([
-      // webpack will try to dedupe code that is common in dependencies
-      new webpack.optimize.DedupePlugin(),
-      // keep entry chunks small
-      new webpack.optimize.OccurrenceOrderPlugin(true),
-      // rip out common code into one file
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'common',
-        filename: 'common/index-[chunkhash].js',
-        chunks: Object.keys(config.entry)
-      }),
-      // minify js and all loaders
-      new ExtractTextPlugin("[name]/style-[chunkhash].css"),
-      new webpack.optimize.UglifyJsPlugin({
-        mangle: {except: []},
-        output: {comments: false},
-      }),
-      new WebpackShellPlugin({
-        onBuildStart: [
-          // delete the old buildn
-          `rm -rf ${distPath};`
-        ],
-        onBuildEnd: [
-          // copy index files over
-          `node ${buildScript} ${config.VERSION} ${config.output.publicPath}`
-        ]
-      })
-    ])
+  config.output = {
+    path: distPath,
+    filename: "[name]/index-[chunkhash].js",
+    // publicPath: 'http://mycdn.com/my-bucket/',
+    publicPath: distPath + '/',
   }
+
+  utils.setEntry(config, name => `./src/entry/${name}/index.js`)
+
+  utils.addPlugins(config, [
+    // webpack will try to dedupe code that is common in dependencies
+    new webpack.optimize.DedupePlugin(),
+    // keep entry chunks small
+    new webpack.optimize.OccurrenceOrderPlugin(true),
+    // rip out common code into one file
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',
+      filename: 'common/index-[chunkhash].js',
+      chunks: Object.keys(config.entry)
+    }),
+    // minify js and all loaders
+    new ExtractTextPlugin("[name]/style-[chunkhash].css"),
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: {except: []},
+      output: {comments: false},
+    }),
+    new WebpackShellPlugin({
+      onBuildStart: [
+        // delete the old buildn
+        `rm -rf ${distPath};`
+      ],
+      onBuildEnd: [
+        // copy index files over
+        `node ${buildScript} ${config.VERSION} ${config.output.publicPath}`
+      ]
+    })
+  ])
   return config
 }
 
