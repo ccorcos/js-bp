@@ -12,12 +12,16 @@ This is a basic JavaScript front-end boilerplate so I don't have to spend so muc
 
 # TODO
 
-- more modular webpack config
-- js only distributable files shouldnt get hashed
-- configurable chunking
+- lint scss files?
+- webpack and karma comments and notes
 
-- unit tests
-- functional tests
+- js only distributable files shouldnt get hashed
+  - e.g. creating a package or something
+- configurable chunking / targets
+
+- integration tests with webdriver.io
+
+- continuous integration with travis-ci
 
 - routing, state, HMR
 - postcss? css modules? inline css?
