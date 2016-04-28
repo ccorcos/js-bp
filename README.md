@@ -12,16 +12,20 @@ This is a basic JavaScript front-end boilerplate so I don't have to spend so muc
 
 # TODO
 
+- entry from html vs js vs css
+- serve static based on dist paths!
+
 - lint scss files?
 - webpack and karma comments and notes
-
+- unit tests with other browsers`
 - js only distributable files shouldnt get hashed
   - e.g. creating a package or something
 - configurable chunking / targets
+- continuous integration with travis-ci
+
 
 - integration tests with webdriver.io
 
-- continuous integration with travis-ci
 
 - routing, state, HMR
 - postcss? css modules? inline css?
