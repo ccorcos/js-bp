@@ -5,6 +5,7 @@ const baseConfig = require('./base')
 
 const makeConfig = (args) => R.pipe(...args)(baseConfig)
 
+// specify the webpack config for each environment as a composition
 module.exports = {
   development: () => makeConfig([
     require('./loaders/eslint'),
@@ -23,8 +24,8 @@ module.exports = {
     require('./production'),
   ]),
   testing: () => makeConfig([
-    // require('./loaders/eslint'),
     require('./loaders/istanbul'),
+    require('./loaders/eslint'), // order matters here
     require('./loaders/babel'),
     require('./loaders/json'),
     require('./loaders/ignore'),

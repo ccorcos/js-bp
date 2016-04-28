@@ -38,6 +38,9 @@ module.exports = function(config) {
         type: 'cobertura',
         dir: './test_results',
         file: 'test-unit-coverage.xml',
+      }, {
+        // prints out to the console
+        type: 'text',
       }]
     },
     junitReporter: {

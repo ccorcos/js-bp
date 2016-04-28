@@ -1,11 +1,10 @@
 import React from 'react'
-import {mount} from 'enzyme'
+import { mount } from 'enzyme'
 import sinon from 'sinon/pkg/sinon'
 import expect from 'expect'
 import Counter from 'ui/counter'
 
 describe('<Counter />', () => {
-
   it('increments', () => {
     const increment = sinon.spy()
     const decrement = sinon.spy()
@@ -32,5 +31,4 @@ describe('<Counter />', () => {
     expect(increment.calledOnce).toEqual(false)
     expect(decrement.calledOnce).toEqual(false)
   })
-
 })
