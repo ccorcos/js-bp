@@ -6,8 +6,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server",
-    "build": "NODE_ENV=production ./node_modules/.bin/webpack -p --progress",
-    "test": ""
+    "build": "NODE_ENV=production webpack -p --progress",
+    "lint": "eslint src",
+    "test": "npm run lint && karma start"
   },
   "dependencies": {
     "is-js": "^0.1.1",

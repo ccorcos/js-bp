@@ -7,5 +7,8 @@ module.exports = config => {
     loader: "eslint",
     exclude: /node_modules/,
   })
+  config.eslint = {
+    fix: true,
+  }
   return config
 }

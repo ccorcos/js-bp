@@ -30,7 +30,7 @@ const WebpackShellPlugin = require('webpack-shell-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = config => {
-  const distPath = path.resolve(`${__dirname}/../dist/${config.VERSION}/`)
+  const distPath = path.resolve(`${__dirname}/../dist/`)
   const buildScript = path.resolve(`${__dirname}/../scripts/build-html.js`)
 
   config.output = {

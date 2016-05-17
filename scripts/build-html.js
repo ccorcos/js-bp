@@ -36,7 +36,7 @@ entries.forEach(entry => {
   let html = fs.readFileSync(`${entryDir}/${entry}/index.html`, 'utf8')
 
   // find the index file and replace the name
-  const jsFile = fs.readdirSync(`${distDir}/${version}/${entry}`)
+  const jsFile = fs.readdirSync(`${distDir}/${entry}`)
     .filter(str => str.endsWith('.js'))[0]
 
   console.log(`- found index.js: ${jsFile}`)
@@ -47,7 +47,7 @@ entries.forEach(entry => {
     `<script src="${jsPath}"></script>`
   )
 
-  const cssFile = fs.readdirSync(`${distDir}/${version}/${entry}`)
+  const cssFile = fs.readdirSync(`${distDir}/${entry}`)
     .filter(str => str.endsWith('.css'))[0]
 
   console.log(`- found style.css: ${cssFile}`)
@@ -60,7 +60,7 @@ entries.forEach(entry => {
   )
 
   // put the common js file before the index file
-  const commonJsFiles = fs.readdirSync(`${distDir}/${version}/common/`)
+  const commonJsFiles = fs.readdirSync(`${distDir}/common/`)
     .filter(str => str.endsWith('.js'))
 
   commonJsFiles.forEach(commonFile => {
@@ -73,7 +73,7 @@ entries.forEach(entry => {
     )
   })
 
-  const commonCssFiles = fs.readdirSync(`${distDir}/${version}/common/`)
+  const commonCssFiles = fs.readdirSync(`${distDir}/common/`)
     .filter(str => str.endsWith('.css'))
 
   commonCssFiles.forEach(commonFile => {
@@ -86,5 +86,5 @@ entries.forEach(entry => {
     )
   })
 
-  fs.writeFileSync(`${distDir}/${version}/${entry}/index.html`, html, 'utf8')
+  fs.writeFileSync(`${distDir}/${entry}/index.html`, html, 'utf8')
 })
