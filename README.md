@@ -1,5 +1,7 @@
 # JS Boilerplate
 
+![](https://travis-ci.org/ccorcos/js-bp.svg?branch=master)
+
 This is a basic JavaScript front-end boilerplate so I don't have to spend so much damn time copying configurations from older projects.
 
 # Conventions
@@ -13,8 +15,6 @@ This is a basic JavaScript front-end boilerplate so I don't have to spend so muc
 # TODO
 
 - entry from html vs js vs css
-- serve static based on dist paths!
-
 - lint scss files?
 - webpack and karma comments and notes
 - unit tests with other browsers`
