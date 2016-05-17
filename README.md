@@ -43,4 +43,13 @@ This is a basic JavaScript front-end boilerplate so I don't have to spend so muc
 
 # Features
 
-- coming soon
+- webpack
+- babel
+- eslint
+- SCSS
+- hash files and assets
+- multiple entry points
+- react
+- karma
+- istanbul code coverage
+- development proxy
